@@ -1,0 +1,25 @@
+{
+  "name": "my-project-name",
+  "version": "0.0.1",
+  "description": "My brilliant project's description",
+  "appDir": "./app",
+  "buildDir": "./build",
+  "scripts": {
+      "clean": "rm -r build; mkdir build;",
+      "watch-scripts": "watchify -t babelify $npm_package_appDir/scripts/main.jsx -o $npm_package_buildDir/main.js -v",
+      "watch-styles": "sass --watch $npm_package_appDir/styles:$npm_package_buildDir",
+      "build-scripts": "browserify $npm_package_appDir/scripts/main.jsx -t babelify | uglifyjs -c > $npm_package_buildDir/main.js",
+      "build-styles": "sass --update --force --style compressed $npm_package_appDir/styles:$npm_package_buildDir",
+      "start": "npm run clean; npm run watch-styles & npm run watch-scripts",
+      "build": "npm run clean; npm run build-styles & npm run build-scripts"
+  },
+  "dependencies": {
+      "browserify": "*",
+      "watchify": "*",
+      "babelify": "*",
+      "uglify-js": "*",
+      "react": "*"
+  },
+  "author": "Bernardo Baquero Stand",
+  "license": "MIT"
+}
