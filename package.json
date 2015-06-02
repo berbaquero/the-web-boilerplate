@@ -11,7 +11,7 @@
     "watch-styles": "sass --watch $npm_package_appDir/styles:$npm_package_buildDir",
     "build-scripts": "browserify $npm_package_appDir/scripts/main.jsx -t babelify | uglifyjs -c > $npm_package_buildDir/main.js",
     "build-styles": "sass --update --force --style compressed $npm_package_appDir/styles:$npm_package_buildDir",
-    "build-statics": "node build $npm_package_templatesDir/index",
+    "build-statics": "node build index",
     "start": "npm run clean; npm run watch-styles & npm run watch-scripts",
     "build": "npm run clean; npm run build-styles & npm run build-scripts & npm run build-statics"
   },
