@@ -1,3 +1,5 @@
+// Node script for creating HTML files from React components
+
 var fs = require('fs');
 var React = require('react');
 var reactTools = require('react-tools');

@@ -6,7 +6,7 @@
   "buildDir": "./build",
   "templatesDir": "./app/templates",
   "scripts": {
-    "clean": "rm -r build; mkdir build;",
+    "clean": "rm -r $npm_package_buildDir; mkdir $npm_package_buildDir;",
     "watch-scripts": "watchify -t babelify $npm_package_appDir/scripts/main.jsx -o $npm_package_buildDir/main.js -v",
     "watch-styles": "sass --watch $npm_package_appDir/styles:$npm_package_buildDir",
     "build-scripts": "browserify $npm_package_appDir/scripts/main.jsx -t babelify | uglifyjs -c > $npm_package_buildDir/main.js",
