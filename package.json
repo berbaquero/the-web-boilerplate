@@ -4,21 +4,25 @@
   "description": "My brilliant project's description",
   "appDir": "./app",
   "buildDir": "./build",
+  "templatesDir": "./app/templates",
   "scripts": {
-      "clean": "rm -r build; mkdir build;",
-      "watch-scripts": "watchify -t babelify $npm_package_appDir/scripts/main.jsx -o $npm_package_buildDir/main.js -v",
-      "watch-styles": "sass --watch $npm_package_appDir/styles:$npm_package_buildDir",
-      "build-scripts": "browserify $npm_package_appDir/scripts/main.jsx -t babelify | uglifyjs -c > $npm_package_buildDir/main.js",
-      "build-styles": "sass --update --force --style compressed $npm_package_appDir/styles:$npm_package_buildDir",
-      "start": "npm run clean; npm run watch-styles & npm run watch-scripts",
-      "build": "npm run clean; npm run build-styles & npm run build-scripts"
+    "clean": "rm -r build; mkdir build;",
+    "watch-scripts": "watchify -t babelify $npm_package_appDir/scripts/main.jsx -o $npm_package_buildDir/main.js -v",
+    "watch-styles": "sass --watch $npm_package_appDir/styles:$npm_package_buildDir",
+    "build-scripts": "browserify $npm_package_appDir/scripts/main.jsx -t babelify | uglifyjs -c > $npm_package_buildDir/main.js",
+    "build-styles": "sass --update --force --style compressed $npm_package_appDir/styles:$npm_package_buildDir",
+    "build-statics": "node build $npm_package_templatesDir/index",
+    "start": "npm run clean; npm run watch-styles & npm run watch-scripts",
+    "build": "npm run clean; npm run build-styles & npm run build-scripts & npm run build-statics"
   },
   "dependencies": {
-      "browserify": "*",
-      "watchify": "*",
-      "babelify": "*",
-      "uglify-js": "*",
-      "react": "*"
+    "browserify": "*",
+    "watchify": "*",
+    "babelify": "*",
+    "uglify-js": "*",
+    "react": "*",
+    "react-tools": "*",
+    "glob": "*"
   },
   "author": "Bernardo Baquero Stand",
   "license": "MIT"
