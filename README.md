@@ -6,7 +6,9 @@ Primarily using React for dynamic _and_ static UI building and Sass for CSS pre-
 
 ### Get it
 
-Just hit the 'Download ZIP' button to get the project and start from there!
+Just hit the '**Download ZIP**' button to get the project and start from there!
+
+_If you `git clone` the repo, you'll get the development history from it, which you probably don't want for your own project._
 
 ### Run it
 
