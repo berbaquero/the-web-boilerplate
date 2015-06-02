@@ -16,13 +16,13 @@
     "build": "npm run clean; npm run build-styles & npm run build-scripts & npm run build-statics"
   },
   "dependencies": {
-    "browserify": "*",
-    "watchify": "*",
-    "babelify": "*",
-    "uglify-js": "*",
-    "react": "*",
-    "react-tools": "*",
-    "glob": "*"
+    "babelify": "^6.1.2",
+    "glob": "^5.0.10",
+    "react": "^0.13.3",
+    "browserify": "^10.2.3",
+    "react-tools": "^0.13.3",
+    "uglify-js": "^2.4.23",
+    "watchify": "^3.2.1"
   },
   "author": "Bernardo Baquero Stand",
   "license": "MIT"
