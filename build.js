@@ -5,13 +5,7 @@ var React = require('react');
 var reactTools = require('react-tools');
 var glob = require('glob');
 var templatesDir = require('./package.json').templatesDir;
-
-// Read CLI args
-var filenames = process.argv.splice(2);
-
-if (!filenames) {
-	throw new Exception('Imcomplete parameters');
-}
+var files = require('./statics.json').files;
 
 var compileJSX = function(file) {
 	var jsxFileContent = fs.readFileSync(file).toString();
@@ -19,11 +13,11 @@ var compileJSX = function(file) {
 	fs.writeFileSync(file.replace('.jsx', '.js'), result);
 };
 
-var createHTML = function(filename) {
+var createHTML = function(filename, filePath) {
 	var reactComponent = require(templatesDir + '/' + filename);
 
 	var markup = React.renderToStaticMarkup(React.createElement(reactComponent));
-	fs.writeFileSync(filename + '.html', markup);
+	fs.writeFileSync(filePath + '/' + filename + '.html', markup);
 };
 
 var deleteFile = function(filename) {
@@ -34,7 +28,9 @@ var deleteFile = function(filename) {
 glob.sync(templatesDir + '/*.jsx').map(compileJSX);
 
 // Get the React component(s) to render to HTML
-filenames.map(createHTML);
+files.map(function(item) {
+	createHTML(item.file, item.path);
+});
 
 // Delete temporary JS files
 glob.sync(templatesDir + '/*.js').map(deleteFile);
