@@ -3,7 +3,7 @@
   "version": "0.0.1",
   "description": "My brilliant project's description",
   "appDir": "./app",
-  "buildDir": "./build",
+  "buildDir": "./dist",
   "templatesDir": "./app/templates",
   "scripts": {
     "clean": "rm -r $npm_package_buildDir; mkdir $npm_package_buildDir;",
