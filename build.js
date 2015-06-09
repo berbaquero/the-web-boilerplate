@@ -2,15 +2,15 @@
 
 var fs = require('fs');
 var React = require('react');
-var reactTools = require('react-tools');
+var babel = require('babel-core');
 var glob = require('glob');
 var templatesDir = require('./package.json').templatesDir;
 var files = require('./statics.json').files;
 
 var compileJSX = function(file) {
 	var jsxFileContent = fs.readFileSync(file).toString();
-	var result = reactTools.transform(jsxFileContent);
-	fs.writeFileSync(file.replace('.jsx', '.js'), result);
+	var result = babel.transform(jsxFileContent);
+	fs.writeFileSync(file.replace('.jsx', '.js'), result.code);
 };
 
 var createHTML = function(filename, filePath) {
