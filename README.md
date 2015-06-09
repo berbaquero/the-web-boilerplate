@@ -46,4 +46,3 @@ Where `$reactFileN` is the list of names of the react components in the `app/tem
 #### Limitations for React components for static HTML compiling
 * The component files must have the `.jsx` extension.
 * When `require`-ing these components inside other components, the extension must be left out. For example: `var Component = require('./component');` even though the filename is `component.jsx`.
-* Doesn't currently support ES6 syntax.
