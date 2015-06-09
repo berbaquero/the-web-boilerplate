@@ -3,6 +3,10 @@
 		{
 			"file": "index",
 			"path": "./"
+		},
+		{
+			"file": "index",
+			"path": "./about"
 		}
 	]
 }

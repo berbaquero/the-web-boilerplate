@@ -24,8 +24,20 @@ var deleteFile = function(filename) {
 	fs.unlinkSync(filename);
 };
 
+var createDir = function(path) {
+	var willCreate = !fs.existsSync(path);
+	if (willCreate) {
+		fs.mkdirSync(path);
+	}
+}
+
 // Create JS temporary files from JSX
 glob.sync(templatesDir + '/*.jsx').map(compileJSX);
+
+// Create folders
+files.map(function(item) {
+	createDir(item.path);
+});
 
 // Get the React component(s) to render to HTML
 files.map(function(item) {
