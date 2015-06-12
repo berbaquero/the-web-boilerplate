@@ -38,10 +38,20 @@ To create HTML files from React, just run on your terminal:
 
 ```coffee
 # on project root
-node build $reactFile1 $reactFile2 $reactFile3 ...
+npm run build-statics
 ```
 
-Where `$reactFileN` is the list of names of the react components in the `app/templates` folder you want to render into HTML.
+This will execute `node build.js` which reads `statics.json` to render the React components into HTML files.
+
+### `statics.json`
+
+This is the main config file for defining which React components from the `templates` folder will be rendered into HTML files, on which directories and its names.
+
+The `files` property is a list of objects that define this behavior by using these properties:
+* `template`: the name of the React JSX component in the `templates` folder, without file extensions (`.jsx`).
+* `path`: the file-path on which to create the resulting HTML file. Will create the folders defined here as necessary.
+* `name`: (optional) the name of the resulting HTML file. If not defined, will be the same as `template`.
+
 
 #### Limitations for React components for static HTML compiling
 * The component files must have the `.jsx` extension.
