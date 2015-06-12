@@ -15,11 +15,16 @@ var compileJSX = function(file) {
 	fs.writeFileSync(file.replace('.jsx', '.js'), result.code);
 };
 
-var createHTML = function(filename, filePath) {
-	var reactComponent = require(templatesDir + '/' + filename);
+var createHTML = function(templateName, filePath, fileName) {
+
+	fileName = fileName ? fileName : templateName;
+
+	var reactComponent = require(templatesDir + '/' + templateName);
 
 	var markup = React.renderToStaticMarkup(React.createElement(reactComponent));
-	fs.writeFileSync(filePath + '/' + filename + '.html', markup);
+	fs.writeFileSync(filePath + '/' + fileName + '.html', markup);
+
+	console.info('Rendered: ' + fileName + '.html at ' + filePath);
 };
 
 var deleteFile = function(filename) {
@@ -43,10 +48,10 @@ files.map(function(item) {
 
 // Get the React component(s) to render to HTML
 files.map(function(item) {
-	createHTML(item.file, item.path);
+	createHTML(item.template, item.path, item.name);
 });
 
 // Delete temporary JS files
 glob.sync(templatesDir + '/*.js').map(deleteFile);
 
-console.info('React components successfully rendered to HTML');
+console.info('All React components successfully rendered to HTML');

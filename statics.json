@@ -1,12 +1,13 @@
 {
 	"files": [
 		{
-			"file": "index",
+			"template": "index",
 			"path": "./"
 		},
 		{
-			"file": "index",
-			"path": "./about"
+			"template": "index",
+			"path": "./about",
+			"name": "index"
 		}
 	]
 }
