@@ -55,4 +55,4 @@ The `files` property is a list of objects that define this behavior by using the
 
 #### Limitations for React components for static HTML compiling
 * The component files must have the `.jsx` extension.
-* When `require`-ing these components inside other components, the extension must be left out. For example: `var Component = require('./component');` even though the filename is `component.jsx`.
+* When `require`-ing / `import`-ing these components inside other components, the extension must be left out. For example: `var Component = require('./component');` even though the filename is `component.jsx`.
