@@ -4,7 +4,9 @@ var fs = require('fs');
 var React = require('react');
 var babel = require('babel-core');
 var glob = require('glob');
-var templatesDir = require('./package.json').templatesDir;
+var mkdirp = require('mkdirp');
+var pkg = require('./package.json');
+var templatesDir = pkg.templatesDir;
 var files = require('./statics.json').files;
 
 var compileJSX = function(file) {
@@ -27,9 +29,9 @@ var deleteFile = function(filename) {
 var createDir = function(path) {
 	var willCreate = !fs.existsSync(path);
 	if (willCreate) {
-		fs.mkdirSync(path);
+		mkdirp.sync(path);
 	}
-}
+};
 
 // Create JS temporary files from JSX
 glob.sync(templatesDir + '/*.jsx').map(compileJSX);
