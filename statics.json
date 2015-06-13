@@ -2,11 +2,7 @@
 	"files": [
 		{
 			"template": "index",
-			"path": "./"
-		},
-		{
-			"template": "index",
-			"path": "./about",
+			"path": "./",
 			"name": "index"
 		}
 	]
