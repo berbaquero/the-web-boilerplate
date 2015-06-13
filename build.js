@@ -22,7 +22,7 @@ var createHTML = function(templateName, filePath, fileName) {
 	var reactComponent = require(templatesDir + '/' + templateName);
 
 	var markup = React.renderToStaticMarkup(React.createElement(reactComponent));
-	fs.writeFileSync(filePath + '/' + fileName + '.html', markup);
+	fs.writeFileSync(filePath + '/' + fileName + '.html', '<!DOCTYPE html>' + markup);
 
 	console.info('Rendered: ' + fileName + '.html at ' + filePath);
 };
