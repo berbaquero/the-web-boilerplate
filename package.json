@@ -7,18 +7,20 @@
   "templatesDir": "./app/templates",
   "scripts": {
     "clean": "rm -r $npm_package_buildDir; mkdir $npm_package_buildDir;",
-    "watch-scripts": "watchify -t babelify $npm_package_appDir/scripts/main.jsx -o $npm_package_buildDir/main.js -v",
-    "watch-styles": "sass --watch $npm_package_appDir/styles:$npm_package_buildDir",
     "build-scripts": "browserify $npm_package_appDir/scripts/main.jsx -t babelify | uglifyjs -c > $npm_package_buildDir/main.js",
+    "watch-scripts": "watchify -t babelify $npm_package_appDir/scripts/main.jsx -o $npm_package_buildDir/main.js -v",
     "build-styles": "sass --update --force --style compressed $npm_package_appDir/styles:$npm_package_buildDir",
+    "watch-styles": "sass --watch $npm_package_appDir/styles:$npm_package_buildDir",
     "build-statics": "node build",
-    "start": "npm run clean; npm run watch-styles & npm run watch-scripts",
+    "watch-statics": "chokidar 'app/templates/*.jsx' -c 'node build'",
+    "start": "npm run clean; npm run watch-styles & npm run watch-scripts & npm run watch-statics",
     "build": "npm run clean; npm run build-styles; npm run build-scripts; npm run build-statics"
   },
   "dependencies": {
     "babel-core": "^5.5.6",
     "babelify": "^6.1.2",
     "browserify": "^10.2.3",
+    "chokidar-cli": "^0.2.1",
     "glob": "^5.0.10",
     "mkdirp": "^0.5.1",
     "react": "^0.13.3",
