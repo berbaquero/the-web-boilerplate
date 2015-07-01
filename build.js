@@ -8,6 +8,7 @@ var mkdirp = require('mkdirp');
 var pkg = require('./package.json');
 var templatesDir = pkg.templatesDir;
 var files = require('./statics.json').files;
+var chalk = require('chalk');
 
 var compileJSX = function(file) {
 	var jsxFileContent = fs.readFileSync(file).toString();
@@ -16,15 +17,14 @@ var compileJSX = function(file) {
 };
 
 var createHTML = function(templateName, filePath, fileName) {
-
 	fileName = fileName ? fileName : templateName;
 
-	var reactComponent = require(templatesDir + '/' + templateName);
+	var reactComponent = require(templatesDir + '/' + templateName),
+		markup = React.renderToStaticMarkup(React.createElement(reactComponent));
 
-	var markup = React.renderToStaticMarkup(React.createElement(reactComponent));
 	fs.writeFileSync(filePath + '/' + fileName + '.html', '<!DOCTYPE html>' + markup);
 
-	console.info('Rendered: ' + fileName + '.html at ' + filePath);
+	console.info(chalk.green('Rendered: ' + fileName + '.html at ' + filePath));
 };
 
 var deleteFile = function(filename) {
@@ -54,4 +54,4 @@ files.map(function(item) {
 // Delete temporary JS files
 glob.sync(templatesDir + '/*.js').map(deleteFile);
 
-console.info('All React components successfully rendered to HTML');
+console.info(chalk.bold('All React components successfully rendered to HTML'));
