@@ -26,8 +26,8 @@ npm run build # to build the whole project
 
 You have 3 main working folders, located inside the `app` folder:
 
-* `scripts` — contains all your JS modules and JSX components
-* `styles` — contains all your 
+* `scripts` — contains all your JS modules and JSX components.
+* `styles` — contains all your SCSS files, for Sass pre-processing.
 * `templates` — contains the React components that will be rendered to static HTML files.
 
 ### React for static HTML files
