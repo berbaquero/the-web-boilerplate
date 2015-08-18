@@ -16,7 +16,7 @@
     "start": "npm run clean; npm run watch-styles & npm run watch-scripts & npm run watch-statics",
     "build": "npm run clean; npm run build-styles; npm run build-scripts; npm run build-statics"
   },
-  "dependencies": {
+  "devDependencies": {
     "babel-core": "^5.5.6",
     "babelify": "^6.1.2",
     "browserify": "^10.2.3",
